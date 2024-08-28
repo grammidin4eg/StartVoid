@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://tiwluyqs0x7w"]
+[gd_scene load_steps=9 format=3 uid="uid://tiwluyqs0x7w"]
 
 [ext_resource type="PackedScene" uid="uid://drju6low0rlxi" path="res://scenes/player/player.tscn" id="1_dkoxo"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_ogoji"]
 [ext_resource type="AudioStream" uid="uid://cexi81y0b83s8" path="res://mus/battle1.mp3" id="3_72vtx"]
+[ext_resource type="PackedScene" uid="uid://dg5huet1dns14" path="res://scenes/ufo/ufo.tscn" id="4_ryn2x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_giw15"]
 size = Vector2(1442, 882)
@@ -13,6 +14,9 @@ size = Vector2(1278, 88)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ie2to"]
 size = Vector2(96, 669)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h3sn7"]
+size = Vector2(1199, 20)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ogoji")
 
@@ -21,7 +25,7 @@ position = Vector2(540, 578)
 
 [node name="BulletArea" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 8
+collision_mask = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletArea"]
 position = Vector2(571, 308)
@@ -51,4 +55,16 @@ shape = SubResource("RectangleShape2D_ie2to")
 stream = ExtResource("3_72vtx")
 autoplay = true
 
+[node name="Ufo" parent="." instance=ExtResource("4_ryn2x")]
+position = Vector2(713, 45)
+
+[node name="MiddleLine" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MiddleLine"]
+position = Vector2(567, 331)
+shape = SubResource("RectangleShape2D_h3sn7")
+
 [connection signal="body_exited" from="BulletArea" to="." method="_on_bullet_area_body_exited"]
+[connection signal="body_entered" from="MiddleLine" to="." method="_on_middle_line_body_entered"]

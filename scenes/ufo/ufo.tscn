@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg5huet1dns14"]
+
+[ext_resource type="Script" path="res://scenes/ufo/ufo.gd" id="1_5u846"]
+[ext_resource type="Texture2D" uid="uid://cubxo1j4mj0um" path="res://images/ufo_1.png" id="1_egrfc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5mo4b"]
+radius = 23.0217
+
+[node name="Ufo" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 11
+script = ExtResource("1_5u846")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_egrfc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5mo4b")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -6,6 +6,7 @@ const BULLET = preload("res://scenes/shots/laser_shot.tscn")
 
 var bullet_timer : Timer = Timer.new()
 var health: int = 10
+var is_visible: bool = true
 
 signal change_heart(new_hearth)
 
