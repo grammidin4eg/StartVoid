@@ -1,8 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://tiwluyqs0x7w"]
+[gd_scene load_steps=6 format=3 uid="uid://tiwluyqs0x7w"]
 
 [ext_resource type="PackedScene" uid="uid://drju6low0rlxi" path="res://scenes/player/player.tscn" id="1_dkoxo"]
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_ogoji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_giw15"]
+size = Vector2(1442, 882)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2n67p"]
+size = Vector2(1278, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ie2to"]
+size = Vector2(96, 669)
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_ogoji")
 
 [node name="Player" parent="." instance=ExtResource("1_dkoxo")]
 position = Vector2(540, 578)
+
+[node name="BulletArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletArea"]
+position = Vector2(571, 308)
+shape = SubResource("RectangleShape2D_giw15")
+debug_color = Color(0, 0.462745, 0.541176, 0)
+
+[node name="Wall" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(578, 679)
+shape = SubResource("RectangleShape2D_2n67p")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall"]
+position = Vector2(555, -40)
+shape = SubResource("RectangleShape2D_2n67p")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-34, 322.5)
+shape = SubResource("RectangleShape2D_ie2to")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall"]
+position = Vector2(1184, 321)
+shape = SubResource("RectangleShape2D_ie2to")
+
+[connection signal="body_exited" from="BulletArea" to="." method="_on_bullet_area_body_exited"]
