@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://tiwluyqs0x7w"]
+[gd_scene load_steps=7 format=3 uid="uid://tiwluyqs0x7w"]
 
 [ext_resource type="PackedScene" uid="uid://drju6low0rlxi" path="res://scenes/player/player.tscn" id="1_dkoxo"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_ogoji"]
+[ext_resource type="AudioStream" uid="uid://cexi81y0b83s8" path="res://mus/battle1.mp3" id="3_72vtx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_giw15"]
 size = Vector2(1442, 882)
@@ -45,5 +46,9 @@ shape = SubResource("RectangleShape2D_ie2to")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall"]
 position = Vector2(1184, 321)
 shape = SubResource("RectangleShape2D_ie2to")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_72vtx")
+autoplay = true
 
 [connection signal="body_exited" from="BulletArea" to="." method="_on_bullet_area_body_exited"]

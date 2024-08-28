@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://2f4ka451ginb"]
+[gd_scene load_steps=5 format=3 uid="uid://2f4ka451ginb"]
 
 [ext_resource type="Texture2D" uid="uid://cf5g6u4m2br45" path="res://images/laser_shot.png" id="1_ii1h2"]
 [ext_resource type="Script" path="res://scenes/shots/laser_shot.gd" id="1_xt8f5"]
+[ext_resource type="AudioStream" uid="uid://bojvr5k1d01s" path="res://snd/shlep.mp3" id="3_u4tsh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ek2pv"]
 size = Vector2(8, 32)
 
 [node name="LaserShot" type="CharacterBody2D"]
 collision_layer = 8
-collision_mask = 14
+collision_mask = 10
 script = ExtResource("1_xt8f5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,3 +20,6 @@ texture = ExtResource("1_ii1h2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_ek2pv")
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_u4tsh")

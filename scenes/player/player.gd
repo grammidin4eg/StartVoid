@@ -40,3 +40,4 @@ func create_bullet(position):
 	var bullet := BULLET.instantiate()
 	bullet.global_position = position
 	get_parent().add_child(bullet)
+	bullet.shoot_sound()
