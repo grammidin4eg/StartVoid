@@ -8,6 +8,8 @@ const SPEED = 50
 const ANGULAR_SPEED = PI
 var type: UFO_DIRECT = UFO_DIRECT.DOWN
 
+var health = 1
+
 func _physics_process(delta):
 	rotation += ANGULAR_SPEED * delta
 	if type == UFO_DIRECT.DOWN:
@@ -28,3 +30,9 @@ func _on_timer_timeout():
 		var bullet := BULLET.instantiate()
 		bullet.global_position = position
 		get_parent().add_child(bullet)
+
+func hurt(value: int):
+	health -= value
+	if health < 1:
+		Common.create_exposion(position, get_parent())
+		queue_free()

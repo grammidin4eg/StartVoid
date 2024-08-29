@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3no0xslytqid"]
+
+[ext_resource type="Script" path="res://scenes/exposion/exposion.gd" id="1_0bpox"]
+[ext_resource type="Texture2D" uid="uid://col67xstg84ah" path="res://images/exposion.png" id="1_g6gci"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16cxj"]
+atlas = ExtResource("1_g6gci")
+region = Rect2(14, 0, 49, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frfuc"]
+atlas = ExtResource("1_g6gci")
+region = Rect2(63, 0, 49, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4kua"]
+atlas = ExtResource("1_g6gci")
+region = Rect2(112, 0, 49, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s08ub"]
+atlas = ExtResource("1_g6gci")
+region = Rect2(161, 0, 49, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ppwk"]
+atlas = ExtResource("1_g6gci")
+region = Rect2(210, 0, 49, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qytd"]
+atlas = ExtResource("1_g6gci")
+region = Rect2(259, 0, 49, 63)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l3loc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16cxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frfuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4kua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s08ub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ppwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qytd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="Exposion" type="Node2D"]
+script = ExtResource("1_0bpox")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l3loc")
+frame = 5
+
+[connection signal="animation_looped" from="anim" to="." method="_on_anim_animation_finished"]
