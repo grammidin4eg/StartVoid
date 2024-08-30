@@ -7,8 +7,13 @@
 size = Vector2(55, 50)
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 7
+collision_mask = 23
 script = ExtResource("1_v524d")
+
+[node name="Shield" type="Polygon2D" parent="."]
+visible = false
+color = Color(0.25098, 0.294118, 1, 1)
+polygon = PackedVector2Array(0, -31, -9, -23, -9, -13, -32, 9, -32, 18, -17.6366, 18, 17, 18, 32, 18, 32, 9, 9, -13, 9, -24)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_r7qcg")

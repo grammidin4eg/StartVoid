@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://tiwluyqs0x7w"]
+[gd_scene load_steps=12 format=3 uid="uid://tiwluyqs0x7w"]
 
 [ext_resource type="PackedScene" uid="uid://drju6low0rlxi" path="res://scenes/player/player.tscn" id="1_dkoxo"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_ogoji"]
 [ext_resource type="AudioStream" uid="uid://cexi81y0b83s8" path="res://mus/battle1.mp3" id="3_72vtx"]
 [ext_resource type="PackedScene" uid="uid://dg5huet1dns14" path="res://scenes/ufo/ufo.tscn" id="4_ryn2x"]
+[ext_resource type="Script" path="res://scenes/main/spawn_timer.gd" id="5_5amii"]
+[ext_resource type="Texture2D" uid="uid://nkj50pduroue" path="res://images/ss_1.png" id="6_g2vub"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_giw15"]
 size = Vector2(1442, 882)
@@ -16,6 +18,12 @@ size = Vector2(96, 669)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h3sn7"]
 size = Vector2(1199, 20)
+
+[sub_resource type="Curve2D" id="Curve2D_7jr7w"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 18, -42, 0, 0, 0, 0, 1120, -48, 0, 0, 0, 0, 1121, -228, 0, 0, 0, 0, 15, -229, 0, 0, 0, 0, 18, -42)
+}
+point_count = 5
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ogoji")
@@ -66,5 +74,42 @@ collision_mask = 2
 position = Vector2(567, 331)
 shape = SubResource("RectangleShape2D_h3sn7")
 
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_7jr7w")
+
+[node name="SpawnPathFollow" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
+position = Vector2(18, -42)
+rotation = -0.00544459
+
+[node name="SpawnMarker" type="Marker2D" parent="Path2D/SpawnPathFollow"]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+script = ExtResource("5_5amii")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="UILayer"]
+offset_right = 113.0
+offset_bottom = 40.0
+
+[node name="hpSprite" type="Sprite2D" parent="UILayer/Panel"]
+position = Vector2(14, 20)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_g2vub")
+
+[node name="hpLabel" type="Label" parent="UILayer/Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 26.0
+offset_top = 9.0
+offset_right = 76.0
+offset_bottom = 32.0
+text = "x 1000"
+
+[connection signal="change_heart" from="Player" to="." method="_on_player_change_heart"]
 [connection signal="body_exited" from="BulletArea" to="." method="_on_bullet_area_body_exited"]
 [connection signal="body_entered" from="MiddleLine" to="." method="_on_middle_line_body_entered"]
+[connection signal="timeout" from="SpawnTimer" to="SpawnTimer" method="_on_timeout"]
