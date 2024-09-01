@@ -19,6 +19,7 @@ func _physics_process(delta):
 		
 		if collider and collider.is_in_group("Enemy"):
 			collider.hurt(power)
+			queue_free()
 
 func shoot_sound():
 	$ShootSound.play()
