@@ -17,3 +17,4 @@ func _on_timeout():
 
 func _on_collect(type):
 	on_bonus_collect.emit(type)
+	$BonusTakeSnd.play()
