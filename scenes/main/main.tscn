@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://tiwluyqs0x7w"]
+[gd_scene load_steps=14 format=3 uid="uid://tiwluyqs0x7w"]
 
 [ext_resource type="PackedScene" uid="uid://drju6low0rlxi" path="res://scenes/player/player.tscn" id="1_dkoxo"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_ogoji"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dg5huet1dns14" path="res://scenes/ufo/ufo.tscn" id="4_ryn2x"]
 [ext_resource type="Script" path="res://scenes/main/spawn_timer.gd" id="5_5amii"]
 [ext_resource type="Texture2D" uid="uid://nkj50pduroue" path="res://images/ss_1.png" id="6_g2vub"]
+[ext_resource type="Script" path="res://scenes/main/parallax_background.gd" id="7_d8je0"]
+[ext_resource type="Texture2D" uid="uid://cgb5cuxns7hl0" path="res://images/background_1.png" id="7_fmu6m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_giw15"]
 size = Vector2(1442, 882)
@@ -108,6 +110,19 @@ offset_top = 9.0
 offset_right = 76.0
 offset_bottom = 32.0
 text = "x 1000"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("7_d8je0")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, -5)
+motion_mirroring = Vector2(0, 2340)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, -1581)
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("7_fmu6m")
+centered = false
 
 [connection signal="change_heart" from="Player" to="." method="_on_player_change_heart"]
 [connection signal="body_exited" from="BulletArea" to="." method="_on_bullet_area_body_exited"]
