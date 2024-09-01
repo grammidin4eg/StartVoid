@@ -4,28 +4,29 @@ enum UFO_DIRECT { DOWN, FOLOW }
 
 const BULLET = preload("res://scenes/shots/ufo_ball.tscn")
 
-const SPEED = 50
-const ANGULAR_SPEED = PI
-var type: UFO_DIRECT = UFO_DIRECT.DOWN
+@export var SPEED = 50
+@export var ANGULAR_SPEED = PI
+@export var type: UFO_DIRECT = UFO_DIRECT.DOWN
+@export var middle_type: UFO_DIRECT = UFO_DIRECT.FOLOW
 
-var health = 1
+@export var health = 1
 
 signal on_destroy
 
 func _physics_process(delta):
-	rotation += ANGULAR_SPEED * delta
+	if ANGULAR_SPEED > 0:
+		rotation += ANGULAR_SPEED * delta
 	if type == UFO_DIRECT.DOWN:
 		velocity = Vector2.DOWN * SPEED
 	if type == UFO_DIRECT.FOLOW:
 		var player = get_node('/root/Main/Player')
 		if player and player.is_visible:
 			var direction = global_position.direction_to(player.global_position)
-			velocity = direction * SPEED * 5
+			velocity = direction * SPEED * 3
 	move_and_slide()
 
 func cross_middle():
-	type = UFO_DIRECT.FOLOW
-
+	type = middle_type
 
 func _on_timer_timeout():
 	if type == UFO_DIRECT.DOWN:
