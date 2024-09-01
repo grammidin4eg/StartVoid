@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://c0fqn1x43t7sx" path="res://snd/cli.mp3" id="9_g13xc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_giw15"]
-size = Vector2(1442, 882)
+size = Vector2(1511, 1100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2n67p"]
 size = Vector2(1278, 88)
@@ -37,10 +37,10 @@ position = Vector2(540, 578)
 
 [node name="BulletArea" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 88
+collision_mask = 90
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletArea"]
-position = Vector2(571, 308)
+position = Vector2(552.5, 181)
 shape = SubResource("RectangleShape2D_giw15")
 debug_color = Color(0, 0.462745, 0.541176, 0)
 

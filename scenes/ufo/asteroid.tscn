@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2rejurhd3l6m"]
+
+[ext_resource type="PackedScene" uid="uid://dg5huet1dns14" path="res://scenes/ufo/ufo.tscn" id="1_j5daa"]
+[ext_resource type="Texture2D" uid="uid://cp5klb14swp5r" path="res://images/asteroid.png" id="2_48krv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d1g7k"]
+radius = 15.2971
+
+[node name="Asteroid" instance=ExtResource("1_j5daa")]
+SPEED = 50
+ANGULAR_SPEED = 1.0
+middle_type = 0
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_48krv")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_d1g7k")
+
+[node name="Timer" parent="." index="2"]
+wait_time = 0.001
+autostart = false

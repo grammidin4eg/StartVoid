@@ -1,6 +1,10 @@
 extends Timer
 
-const AIM = [preload("res://scenes/ufo/ufo.tscn"), preload("res://scenes/ufo/big_ufo.tscn")]
+const AIM = [
+	preload("res://scenes/ufo/ufo.tscn"), 
+	preload("res://scenes/ufo/big_ufo.tscn"),
+	preload("res://scenes/ufo/asteroid.tscn")
+	]
 
 signal on_aim_destroy
 
