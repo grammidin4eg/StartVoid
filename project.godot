@@ -70,6 +70,7 @@ down={
 2d_physics/layer_4="Bullet"
 2d_physics/layer_5="EnemyBullet"
 2d_physics/layer_6="System"
+2d_physics/layer_7="Bonus"
 
 [rendering]
 

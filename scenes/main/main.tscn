@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://tiwluyqs0x7w"]
+[gd_scene load_steps=14 format=3 uid="uid://tiwluyqs0x7w"]
 
 [ext_resource type="PackedScene" uid="uid://drju6low0rlxi" path="res://scenes/player/player.tscn" id="1_dkoxo"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_ogoji"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://nkj50pduroue" path="res://images/ss_1.png" id="6_g2vub"]
 [ext_resource type="Script" path="res://scenes/main/parallax_background.gd" id="7_d8je0"]
 [ext_resource type="Texture2D" uid="uid://cgb5cuxns7hl0" path="res://images/background_1.png" id="7_fmu6m"]
+[ext_resource type="Script" path="res://scenes/bonus/bonus_spawn_marker.gd" id="9_7ryra"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_giw15"]
 size = Vector2(1442, 882)
@@ -30,11 +31,12 @@ point_count = 5
 script = ExtResource("1_ogoji")
 
 [node name="Player" parent="." instance=ExtResource("1_dkoxo")]
+unique_name_in_owner = true
 position = Vector2(540, 578)
 
 [node name="BulletArea" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 24
+collision_mask = 88
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletArea"]
 position = Vector2(571, 308)
@@ -135,8 +137,15 @@ scale = Vector2(2.4, 2.4)
 texture = ExtResource("7_fmu6m")
 centered = false
 
+[node name="BonusSpawnMarker" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+script = ExtResource("9_7ryra")
+
 [connection signal="change_heart" from="Player" to="." method="_on_player_change_heart"]
 [connection signal="body_exited" from="BulletArea" to="." method="_on_bullet_area_body_exited"]
 [connection signal="body_entered" from="MiddleLine" to="." method="_on_middle_line_body_entered"]
 [connection signal="on_aim_destroy" from="SpawnTimer" to="." method="_on_spawn_timer_on_aim_destroy"]
 [connection signal="timeout" from="SpawnTimer" to="SpawnTimer" method="_on_timeout"]
+[connection signal="on_bonus_collect" from="BonusSpawnMarker" to="." method="_on_bonus_on_collect"]
+[connection signal="timeout" from="BonusSpawnMarker" to="BonusSpawnMarker" method="_on_timeout"]

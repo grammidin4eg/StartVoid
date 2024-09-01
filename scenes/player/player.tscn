@@ -7,7 +7,7 @@
 size = Vector2(55, 50)
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 23
+collision_mask = 87
 script = ExtResource("1_v524d")
 
 [node name="Shield" type="Polygon2D" parent="."]

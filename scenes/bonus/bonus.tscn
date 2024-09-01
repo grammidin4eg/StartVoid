@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5tgbryfx4kxs"]
+
+[ext_resource type="Script" path="res://scenes/bonus/bonus.gd" id="1_6cmqp"]
+[ext_resource type="Texture2D" uid="uid://cfh715g1d2p0t" path="res://images/bonus_shield.png" id="2_7hom6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6m77y"]
+size = Vector2(28, 32)
+
+[node name="Bonus" type="CharacterBody2D" groups=["Bonus"]]
+collision_layer = 64
+script = ExtResource("1_6cmqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6m77y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7hom6")

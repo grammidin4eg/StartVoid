@@ -22,3 +22,9 @@ func _on_spawn_timer_on_aim_destroy():
 
 func _update_aim_counter():
 	%AimCountLabel.text = str(enemy_count)
+
+
+func _on_bonus_on_collect(type):
+	print('collect: ', type)
+	if type == Bonus.BONUS_TYPE.SHIELD:
+		%Player.set_immortal(4)

@@ -60,6 +60,9 @@ func _physics_process(delta):
 				hurt(1)
 				set_immortal(HURT_IMMORTAL)
 		
+		if collider and collider.is_in_group("Bonus"):
+			collider.collect()
+		
 func create_bullet(position):
 	var bullet := BULLET.instantiate()
 	bullet.global_position = position
