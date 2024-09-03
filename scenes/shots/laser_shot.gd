@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var SPEED = 800
 @export var power = 1
 
+var is_disable: bool = false
+
 func _physics_process(delta):
 	velocity = Vector2.UP * SPEED
 	move_and_slide()
@@ -17,9 +19,11 @@ func _physics_process(delta):
 			collider.queue_free()
 			queue_free()
 		
-		if collider and collider.is_in_group("Enemy"):
-			collider.hurt(power)
+		if collider and collider.is_in_group("Enemy") and not is_disable:
+			print('collide: ', collider)
+			is_disable = true
 			queue_free()
+			collider.hurt(power)
 
 func shoot_sound():
 	$ShootSound.play()

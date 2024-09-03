@@ -9,7 +9,7 @@ size = Vector2(62, 56)
 [node name="BigUfo" instance=ExtResource("1_4n1l3")]
 ANGULAR_SPEED = 0.0
 middle_type = 0
-health = 7
+health = 3
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_t6pib")
