@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 var is_disable: bool = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity = Vector2.UP * SPEED
 	move_and_slide()
 	
@@ -20,7 +20,6 @@ func _physics_process(delta):
 			queue_free()
 		
 		if collider and collider.is_in_group("Enemy") and not is_disable:
-			print('collide: ', collider)
 			is_disable = true
 			queue_free()
 			collider.hurt(power)

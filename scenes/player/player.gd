@@ -8,7 +8,7 @@ const BULLET = preload("res://scenes/shots/laser_shot.tscn")
 
 var bullet_timer : Timer = Timer.new()
 var health: int = 10
-var is_visible: bool = true
+var is_player_visible: bool = true
 var immortal: float = 0
 
 signal change_heart(new_hearth)
@@ -63,9 +63,9 @@ func _physics_process(delta):
 		if collider and collider.is_in_group("Bonus"):
 			collider.collect()
 		
-func create_bullet(position):
+func create_bullet(create_position):
 	var bullet := BULLET.instantiate()
-	bullet.global_position = position
+	bullet.global_position = create_position
 	get_parent().add_child(bullet)
 	bullet.shoot_sound()
 

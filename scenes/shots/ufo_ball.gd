@@ -8,5 +8,5 @@ func _ready():
 		var direction = global_position.direction_to(player.global_position)
 		velocity = direction * SPEED
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	move_and_slide()

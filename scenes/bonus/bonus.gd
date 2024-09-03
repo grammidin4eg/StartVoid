@@ -8,7 +8,7 @@ enum BONUS_TYPE { SHIELD }
 signal on_collect(type: BONUS_TYPE)
 var cur_type: BONUS_TYPE = BONUS_TYPE.SHIELD
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity = Vector2.DOWN * SPEED
 	move_and_slide()
 
