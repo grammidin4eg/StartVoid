@@ -23,6 +23,10 @@ func hurt(value: int):
 	health -= value
 	change_heart.emit(health)
 
+func heal(value: int):
+	health += value
+	change_heart.emit(health)
+
 func _physics_process(delta):
 	var direction_x = Input.get_axis("left", "right")
 	var direction_y = Input.get_axis("up", "down")

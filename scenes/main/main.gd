@@ -25,6 +25,7 @@ func _update_aim_counter():
 
 
 func _on_bonus_on_collect(type):
-	print('collect: ', type)
 	if type == Bonus.BONUS_TYPE.SHIELD:
 		%Player.set_immortal(4)
+	if type == Bonus.BONUS_TYPE.HEART:
+		%Player.heal(1)
