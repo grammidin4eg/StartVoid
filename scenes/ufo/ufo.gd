@@ -23,6 +23,8 @@ func _physics_process(delta):
 		if player and player.is_visible:
 			var direction = global_position.direction_to(player.global_position)
 			velocity = direction * SPEED * 3
+			if ANGULAR_SPEED == 0:
+				look_at(player.global_position)
 	move_and_slide()
 
 func cross_middle():

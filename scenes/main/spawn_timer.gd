@@ -3,7 +3,8 @@ extends Timer
 const AIM = [
 	preload("res://scenes/ufo/ufo.tscn"), 
 	preload("res://scenes/ufo/big_ufo.tscn"),
-	preload("res://scenes/ufo/asteroid.tscn")
+	preload("res://scenes/ufo/asteroid.tscn"),
+	preload("res://scenes/ufo/torpeda.tscn")
 	]
 
 signal on_aim_destroy
