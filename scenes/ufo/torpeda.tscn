@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c25b8de47ypy4" path="res://images/ufo_4.png" id="2_5n732"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lh663"]
-size = Vector2(29, 10)
+size = Vector2(49, 18)
 
 [node name="Torpeda" instance=ExtResource("1_05kjj")]
 ANGULAR_SPEED = 0.0
@@ -12,6 +12,7 @@ type = 1
 
 [node name="Sprite2D" parent="." index="0"]
 rotation = -1.5708
+scale = Vector2(1, 1)
 texture = ExtResource("2_5n732")
 
 [node name="CollisionShape2D" parent="." index="1"]

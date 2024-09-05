@@ -2,11 +2,13 @@ extends CharacterBody2D
 
 @export var SPEED = 800
 @export var power = 1
+@export var velocity_vector = Vector2.UP
+@export var is_play_sound: bool = true
 
 var is_disable: bool = false
 
 func _physics_process(_delta):
-	velocity = Vector2.UP * SPEED
+	velocity = velocity_vector * SPEED
 	move_and_slide()
 	
 	# Посмотрим, какие есть коллизии
@@ -25,4 +27,5 @@ func _physics_process(_delta):
 			collider.hurt(power)
 
 func shoot_sound():
-	$ShootSound.play()
+	if is_play_sound:
+		$ShootSound.play()

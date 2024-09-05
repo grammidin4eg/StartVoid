@@ -64,6 +64,7 @@ position = Vector2(1184, 321)
 shape = SubResource("RectangleShape2D_ie2to")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.307
 script = ExtResource("3_e6yu0")
 
 [node name="MiddleLine" type="Area2D" parent="."]

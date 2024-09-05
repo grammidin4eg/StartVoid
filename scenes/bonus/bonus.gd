@@ -2,16 +2,18 @@ extends CharacterBody2D
 class_name Bonus
 
 const SPEED = 50
-enum BONUS_TYPE { SHIELD, HEART }
+enum BONUS_TYPE { SHIELD, HEART, BOOM }
 
 const BONUSES = [
 	BONUS_TYPE.SHIELD,
-	BONUS_TYPE.HEART
+	BONUS_TYPE.HEART,
+	BONUS_TYPE.BOOM
 ]
 
 const BONUS_TEXTURES = [
 	preload("res://images/bonus_shield.png"),
-	preload("res://images/bonus_hearth.png")
+	preload("res://images/bonus_hearth.png"),
+	preload("res://images/bonus_boom.png")
 ]
 
 signal on_collect(type: BONUS_TYPE)

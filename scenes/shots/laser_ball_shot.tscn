@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bge6io7yjrme5"]
+
+[ext_resource type="PackedScene" uid="uid://2f4ka451ginb" path="res://scenes/shots/laser_shot.tscn" id="1_31nse"]
+[ext_resource type="Texture2D" uid="uid://gwdx1xbokten" path="res://images/laser_ball.png" id="2_7wfc3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_txobf"]
+radius = 8.0
+
+[node name="LaserBallShot" instance=ExtResource("1_31nse")]
+is_play_sound = false
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_7wfc3")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_txobf")
