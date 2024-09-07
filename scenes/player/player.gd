@@ -4,17 +4,21 @@ extends CharacterBody2D
 const SPEED = 500.0
 const HURT_IMMORTAL = 2
 const CLOSE_HURT = 5
+const DEFAULT_DOUBLE_SPEED = 300
+const DEFAULT_WAIT_TIME = 0.5
+
 const BULLET = preload("res://scenes/shots/laser_shot.tscn")
 
 var bullet_timer : Timer = Timer.new()
 var health: int = 10
 var is_player_visible: bool = true
 var immortal: float = 0
+var double_speed: float = 0
 
 signal change_heart(new_hearth)
 
 func _ready():
-	bullet_timer.wait_time = 0.5
+	bullet_timer.wait_time = DEFAULT_WAIT_TIME
 	bullet_timer.one_shot = true
 	add_child(bullet_timer)
 	change_heart.emit(health)
@@ -30,12 +34,14 @@ func heal(value: int):
 func _physics_process(delta):
 	var direction_x = Input.get_axis("left", "right")
 	var direction_y = Input.get_axis("up", "down")
+	var ship_speed = SPEED * 2 if is_double_speed() else SPEED
+
 	if direction_x or direction_y:
-		velocity.x = direction_x * SPEED
-		velocity.y = direction_y * SPEED
+		velocity.x = direction_x * ship_speed
+		velocity.y = direction_y * ship_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED/2)
-		velocity.y = move_toward(velocity.y, 0, SPEED/2)
+		velocity.x = move_toward(velocity.x, 0, ship_speed/2)
+		velocity.y = move_toward(velocity.y, 0, ship_speed/2)
 
 	move_and_slide()
 	
@@ -47,6 +53,10 @@ func _physics_process(delta):
 	# Посмотрим, какие есть коллизии
 	if is_immortal():
 		dec_immortal(delta)
+	
+	if is_double_speed():
+		dec_double_speed()
+	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
@@ -84,3 +94,16 @@ func dec_immortal(value: float):
 	immortal -= value
 	if immortal <= 0:
 		$Shield.visible = false
+
+func set_double_speed():
+	double_speed = DEFAULT_DOUBLE_SPEED
+	bullet_timer.wait_time = DEFAULT_WAIT_TIME / 3
+
+func is_double_speed() -> bool:
+	return double_speed > 0
+
+func dec_double_speed():
+	double_speed -= 1
+	print('double_speed: ', double_speed)
+	if double_speed <= 0:
+		bullet_timer.wait_time = DEFAULT_WAIT_TIME

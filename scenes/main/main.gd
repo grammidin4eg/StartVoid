@@ -41,3 +41,5 @@ func _on_bonus_on_collect(type):
 		Bonus.BONUS_TYPE.BOOM:
 			for i in 36:
 				add_laset_ball(Vector2.from_angle(i * 10))
+		Bonus.BONUS_TYPE.SPEED:
+			%Player.set_double_speed()
