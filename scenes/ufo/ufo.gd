@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-enum UFO_DIRECT { DOWN, FOLOW }
+enum UFO_DIRECT { DOWN, FOLOW, BOOM }
 
 const BULLET = preload("res://scenes/shots/ufo_ball.tscn")
 
@@ -27,8 +27,19 @@ func _physics_process(delta):
 				look_at(player.global_position)
 	move_and_slide()
 
+func create_boom(vel_vector):
+	var new_ball = BULLET.instantiate()
+	new_ball.global_position = global_position
+	new_ball.velocity_vector = vel_vector
+	get_parent().add_child(new_ball)
+
 func cross_middle():
 	type = middle_type
+	if type == UFO_DIRECT.BOOM:
+		await Common.wait(2)
+		for i in 36:
+			create_boom(Vector2.from_angle(i * 10))
+		hurt(health)
 
 func _on_timer_timeout():
 	if type == UFO_DIRECT.DOWN:
