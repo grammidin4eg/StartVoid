@@ -31,6 +31,8 @@ func _ready():
 	$sprite.visible = true
 
 func _physics_process(_delta):
+	if Common.state == Common.EGAMESTATE.LEVEL or Common.state == Common.EGAMESTATE.READY:
+		return
 	velocity = Vector2.DOWN * SPEED
 	move_and_slide()
 

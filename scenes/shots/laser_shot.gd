@@ -8,6 +8,8 @@ extends CharacterBody2D
 var is_disable: bool = false
 
 func _physics_process(_delta):
+	if Common.state == Common.EGAMESTATE.LEVEL or Common.state == Common.EGAMESTATE.READY:
+		return
 	velocity = velocity_vector * SPEED
 	move_and_slide()
 	

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c8d0p7yd7oyj"
+path="res://.godot/imported/space rock 4 (1).mp3-0190a3c80c9bc578b49c6d58bda51856.mp3str"
+
+[deps]
+
+source_file="res://mus/space rock 4 (1).mp3"
+dest_files=["res://.godot/imported/space rock 4 (1).mp3-0190a3c80c9bc578b49c6d58bda51856.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

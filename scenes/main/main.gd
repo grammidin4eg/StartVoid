@@ -1,5 +1,6 @@
 extends Node2D
-var enemy_count = 50
+const DEFAULT_ENEMY_COUNT = 10
+var enemy_count = DEFAULT_ENEMY_COUNT
 
 const LASER_BALL = preload("res://scenes/shots/laser_ball_shot.tscn")
 
@@ -24,6 +25,12 @@ func _on_spawn_timer_on_aim_destroy():
 
 func _update_aim_counter():
 	%AimCountLabel.text = str(enemy_count)
+	if enemy_count <= 0:
+		enemy_count = DEFAULT_ENEMY_COUNT
+		Common.state = Common.EGAMESTATE.LEVEL
+		$SpawnTimer.stop()
+		$BonusSpawnMarker.stop()
+		$UILayer/ReadyLabel.visible = true
 
 func add_laset_ball(vel_vector):
 	var new_ball = LASER_BALL.instantiate()
@@ -43,3 +50,11 @@ func _on_bonus_on_collect(type):
 				add_laset_ball(Vector2.from_angle(i * 10))
 		Bonus.BONUS_TYPE.SPEED:
 			%Player.set_double_speed()
+
+
+func _on_player_player_ready():
+	Common.state = Common.EGAMESTATE.GAME
+	$AudioStreamPlayer.play_random()
+	$SpawnTimer.start()
+	$BonusSpawnMarker.start()
+	$UILayer/ReadyLabel.visible = false

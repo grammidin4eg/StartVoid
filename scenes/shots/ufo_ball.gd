@@ -10,4 +10,6 @@ func _ready():
 		velocity = direction * SPEED
 
 func _physics_process(_delta):
+	if Common.state == Common.EGAMESTATE.LEVEL or Common.state == Common.EGAMESTATE.READY:
+		return
 	move_and_slide()

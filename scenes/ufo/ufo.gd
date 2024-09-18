@@ -14,6 +14,8 @@ const BULLET = preload("res://scenes/shots/ufo_ball.tscn")
 signal on_destroy
 
 func _physics_process(delta):
+	if Common.state == Common.EGAMESTATE.LEVEL or Common.state == Common.EGAMESTATE.READY:
+		return
 	if ANGULAR_SPEED > 0:
 		rotation += ANGULAR_SPEED * delta
 	if type == UFO_DIRECT.DOWN:
@@ -42,6 +44,8 @@ func cross_middle():
 		hurt(health)
 
 func _on_timer_timeout():
+	if Common.state == Common.EGAMESTATE.LEVEL or Common.state == Common.EGAMESTATE.READY:
+		return
 	if type == UFO_DIRECT.DOWN:
 		var bullet := BULLET.instantiate()
 		bullet.global_position = position

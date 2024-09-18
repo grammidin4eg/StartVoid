@@ -16,6 +16,7 @@ var immortal: float = 0
 var double_speed: float = 0
 
 signal change_heart(new_hearth)
+signal player_ready
 
 func _ready():
 	bullet_timer.wait_time = DEFAULT_WAIT_TIME
@@ -32,6 +33,12 @@ func heal(value: int):
 	change_heart.emit(health)
 
 func _physics_process(delta):
+	if Common.state == Common.EGAMESTATE.READY:
+		if Input.is_action_pressed("fire") or Input.is_action_pressed("left") or Input.is_action_pressed("right") or Input.is_action_pressed("up") or Input.is_action_pressed("down"):
+			player_ready.emit()
+		return
+	if Common.state == Common.EGAMESTATE.LEVEL:
+		return
 	var direction_x = Input.get_axis("left", "right")
 	var direction_y = Input.get_axis("up", "down")
 	var ship_speed = SPEED * 2 if is_double_speed() else SPEED
@@ -104,6 +111,5 @@ func is_double_speed() -> bool:
 
 func dec_double_speed():
 	double_speed -= 1
-	print('double_speed: ', double_speed)
 	if double_speed <= 0:
 		bullet_timer.wait_time = DEFAULT_WAIT_TIME

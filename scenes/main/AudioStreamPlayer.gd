@@ -13,9 +13,5 @@ func play_random():
 	stream = TRACKS[rand_index]
 	play()
 
-func _ready():
-	play_random()
-
-
 func _on_finished():
 	play_random()
