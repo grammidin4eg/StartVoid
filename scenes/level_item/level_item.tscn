@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxpi2gnhfjhj5"]
+[gd_scene load_steps=3 format=3 uid="uid://cxpi2gnhfjhj5"]
+
+[ext_resource type="Script" path="res://scenes/level_item/level_item.gd" id="1_2sia6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xujup"]
 bg_color = Color(0.741385, 0.741385, 0.741385, 1)
@@ -7,18 +9,15 @@ bg_color = Color(0.741385, 0.741385, 0.741385, 1)
 offset_right = 603.0
 offset_bottom = 103.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xujup")
+script = ExtResource("1_2sia6")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -59.5
-offset_top = -43.0
-offset_right = 64.5
-offset_bottom = -12.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 text = "Click here"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

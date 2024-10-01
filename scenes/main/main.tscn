@@ -242,5 +242,8 @@ stream = ExtResource("9_g13xc")
 [connection signal="body_entered" from="MiddleLine" to="." method="_on_middle_line_body_entered"]
 [connection signal="on_aim_destroy" from="SpawnTimer" to="." method="_on_spawn_timer_on_aim_destroy"]
 [connection signal="timeout" from="SpawnTimer" to="SpawnTimer" method="_on_timeout"]
+[connection signal="level_slot_click" from="UILayer/LevelUpPanel/LevelItem" to="." method="_on_level_slot_click"]
+[connection signal="level_slot_click" from="UILayer/LevelUpPanel/LevelItem2" to="." method="_on_level_slot_click"]
+[connection signal="level_slot_click" from="UILayer/LevelUpPanel/LevelItem3" to="." method="_on_level_slot_click"]
 [connection signal="on_bonus_collect" from="BonusSpawnMarker" to="." method="_on_bonus_on_collect"]
 [connection signal="timeout" from="BonusSpawnMarker" to="BonusSpawnMarker" method="_on_timeout"]

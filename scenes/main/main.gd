@@ -61,3 +61,12 @@ func _on_player_player_ready():
 	$SpawnTimer.start()
 	$BonusSpawnMarker.start()
 	$UILayer/ReadyLabel.visible = false
+
+
+func _on_level_slot_click(type):
+	print("_on_level_slot_click: ", type)
+	Common.state = Common.EGAMESTATE.GAME
+	$SpawnTimer.start()
+	$BonusSpawnMarker.start()
+	$UILayer/LevelUpPanel.visible = false
+	$AudioStreamPlayer.restore_music()
