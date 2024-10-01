@@ -1,11 +1,13 @@
 extends Node2D
-const DEFAULT_ENEMY_COUNT = 10
+const DEFAULT_ENEMY_COUNT = 2
 var enemy_count = DEFAULT_ENEMY_COUNT
 
 const LASER_BALL = preload("res://scenes/shots/laser_ball_shot.tscn")
 
 func _ready():
 	_update_aim_counter()
+	$UILayer/ReadyLabel.visible = true
+	$UILayer/LevelUpPanel.visible = false
 
 func _on_bullet_area_body_exited(body):
 	body.queue_free()
@@ -30,7 +32,8 @@ func _update_aim_counter():
 		Common.state = Common.EGAMESTATE.LEVEL
 		$SpawnTimer.stop()
 		$BonusSpawnMarker.stop()
-		$UILayer/ReadyLabel.visible = true
+		$UILayer/LevelUpPanel.visible = true
+		$AudioStreamPlayer.hide_music()
 
 func add_laset_ball(vel_vector):
 	var new_ball = LASER_BALL.instantiate()

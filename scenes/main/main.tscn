@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://tiwluyqs0x7w"]
+[gd_scene load_steps=18 format=3 uid="uid://tiwluyqs0x7w"]
 
 [ext_resource type="PackedScene" uid="uid://drju6low0rlxi" path="res://scenes/player/player.tscn" id="1_dkoxo"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_ogoji"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://bfhavxvmpbiaa" path="res://font/Minecraft Seven_2.ttf" id="6_iyexd"]
 [ext_resource type="Script" path="res://scenes/main/parallax_background.gd" id="7_d8je0"]
 [ext_resource type="Texture2D" uid="uid://cgb5cuxns7hl0" path="res://images/background_1.png" id="7_fmu6m"]
+[ext_resource type="PackedScene" uid="uid://cxpi2gnhfjhj5" path="res://scenes/level_item/level_item.tscn" id="7_x6582"]
 [ext_resource type="Script" path="res://scenes/bonus/bonus_spawn_marker.gd" id="9_7ryra"]
 [ext_resource type="AudioStream" uid="uid://c0fqn1x43t7sx" path="res://snd/cli.mp3" id="9_g13xc"]
 
@@ -28,6 +29,14 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 18, -42, 0, 0, 0, 0, 1120, -48, 0, 0, 0, 0, 1121, -228, 0, 0, 0, 0, 15, -229, 0, 0, 0, 0, 18, -42)
 }
 point_count = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjt3e"]
+bg_color = Color(0.0352941, 0.0352941, 0.0352941, 0.937255)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.907942, 0.907942, 0.907942, 1)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ogoji")
@@ -65,7 +74,6 @@ position = Vector2(1184, 321)
 shape = SubResource("RectangleShape2D_ie2to")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -10.307
 script = ExtResource("3_e6yu0")
 
 [node name="MiddleLine" type="Area2D" parent="."]
@@ -143,6 +151,69 @@ theme_override_font_sizes/font_size = 50
 text = "R E A D Y"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UILayer/ReadyLabel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 76.0
+offset_right = 238.0
+offset_bottom = 99.0
+theme_override_fonts/font = ExtResource("6_iyexd")
+text = "Press any key"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelUpPanel" type="Panel" parent="UILayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -308.0
+offset_top = -245.0
+offset_right = 300.0
+offset_bottom = 207.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_sjt3e")
+
+[node name="Label" type="Label" parent="UILayer/LevelUpPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -83.0
+offset_right = 95.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_iyexd")
+theme_override_font_sizes/font_size = 40
+text = "Level UP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelItem" parent="UILayer/LevelUpPanel" instance=ExtResource("7_x6582")]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 86.0
+offset_right = 594.0
+offset_bottom = 189.0
+
+[node name="LevelItem2" parent="UILayer/LevelUpPanel" instance=ExtResource("7_x6582")]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 205.0
+offset_right = 593.0
+offset_bottom = 308.0
+
+[node name="LevelItem3" parent="UILayer/LevelUpPanel" instance=ExtResource("7_x6582")]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 322.0
+offset_right = 593.0
+offset_bottom = 425.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("7_d8je0")
