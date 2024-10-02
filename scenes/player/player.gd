@@ -7,7 +7,7 @@ const CLOSE_HURT = 5
 const DEFAULT_DOUBLE_SPEED = 300
 const DEFAULT_WAIT_TIME = 0.5
 
-const BULLET = preload("res://scenes/shots/laser_shot.tscn")
+var BULLET = preload("res://scenes/shots/laser_shot.tscn")
 
 var bullet_timer : Timer = Timer.new()
 var health: int = 10
@@ -113,3 +113,6 @@ func dec_double_speed():
 	double_speed -= 1
 	if double_speed <= 0:
 		bullet_timer.wait_time = DEFAULT_WAIT_TIME
+
+func change_gun(new_gun):
+	BULLET = new_gun

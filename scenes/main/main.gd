@@ -3,6 +3,7 @@ const DEFAULT_ENEMY_COUNT = 2
 var enemy_count = DEFAULT_ENEMY_COUNT
 
 const LASER_BALL = preload("res://scenes/shots/laser_ball_shot.tscn")
+const HOMMING_MISSLE = preload("res://scenes/shots/homming_missile.tscn")
 
 func _ready():
 	_update_aim_counter()
@@ -71,3 +72,7 @@ func _on_level_slot_click(type):
 	$BonusSpawnMarker.start()
 	$UILayer/LevelUpPanel.visible = false
 	$AudioStreamPlayer.restore_music()
+	match (type):
+		LevelItemButton.LevelItemType.HOMING_MISSILE:
+			print('change gun')
+			%Player.change_gun(HOMMING_MISSLE)

@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhh12g7xsvvtp"]
+
+[ext_resource type="Script" path="res://scenes/shots/homming_missile.gd" id="1_aaqks"]
+[ext_resource type="Texture2D" uid="uid://c25b8de47ypy4" path="res://images/ufo_4.png" id="1_ujnea"]
+[ext_resource type="AudioStream" uid="uid://bojvr5k1d01s" path="res://snd/shlep.mp3" id="3_pjw0h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whaen"]
+size = Vector2(15, 32.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_en6tp"]
+radius = 127.475
+
+[node name="HommingMissile" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 26
+script = ExtResource("1_aaqks")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.38813e-21, -18)
+rotation = 3.14159
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_ujnea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -20.25)
+shape = SubResource("RectangleShape2D_whaen")
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pjw0h")
+
+[node name="SearchArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SearchArea"]
+position = Vector2(0, -20)
+shape = SubResource("CircleShape2D_en6tp")
+
+[connection signal="body_entered" from="SearchArea" to="." method="_on_enemy_body_entered"]
