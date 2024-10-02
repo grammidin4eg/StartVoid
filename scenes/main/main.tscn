@@ -200,6 +200,10 @@ offset_left = 10.0
 offset_top = 86.0
 offset_right = 594.0
 offset_bottom = 189.0
+focus_neighbor_top = NodePath("../LevelItem3")
+focus_neighbor_bottom = NodePath("../LevelItem2")
+focus_next = NodePath("../LevelItem2")
+focus_previous = NodePath("../LevelItem3")
 
 [node name="LevelItem2" parent="UILayer/LevelUpPanel" instance=ExtResource("7_x6582")]
 layout_mode = 0
@@ -207,6 +211,10 @@ offset_left = 11.0
 offset_top = 205.0
 offset_right = 593.0
 offset_bottom = 308.0
+focus_neighbor_top = NodePath("../LevelItem")
+focus_neighbor_bottom = NodePath("../LevelItem3")
+focus_next = NodePath("../LevelItem3")
+focus_previous = NodePath("../LevelItem")
 
 [node name="LevelItem3" parent="UILayer/LevelUpPanel" instance=ExtResource("7_x6582")]
 layout_mode = 0
@@ -214,6 +222,10 @@ offset_left = 11.0
 offset_top = 322.0
 offset_right = 593.0
 offset_bottom = 425.0
+focus_neighbor_top = NodePath("../LevelItem2")
+focus_neighbor_bottom = NodePath("../LevelItem")
+focus_next = NodePath("../LevelItem")
+focus_previous = NodePath("../LevelItem2")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("7_d8je0")

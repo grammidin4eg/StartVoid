@@ -34,6 +34,7 @@ func _update_aim_counter():
 		$BonusSpawnMarker.stop()
 		$UILayer/LevelUpPanel.visible = true
 		$AudioStreamPlayer.hide_music()
+		$UILayer/LevelUpPanel/LevelItem.grab_focus()
 
 func add_laset_ball(vel_vector):
 	var new_ball = LASER_BALL.instantiate()
